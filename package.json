@@ -1,0 +1,24 @@
+{
+  "name": "books",
+  "version": "1.0.0",
+  "description": "A website to download and view books",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anilpdv/books.git"
+  },
+  "keywords": [
+    "books",
+    "nodejs",
+    "libgen-books"
+  ],
+  "author": "anilpdv",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/anilpdv/books/issues"
+  },
+  "homepage": "https://github.com/anilpdv/books#readme"
+}
