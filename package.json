@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/anilpdv/books.git"
+    "url": "https://github.com/anilpdv/books"
   },
   "keywords": [
     "books",
@@ -20,5 +20,14 @@
   "bugs": {
     "url": "https://github.com/anilpdv/books/issues"
   },
-  "homepage": "https://github.com/anilpdv/books#readme"
+  "homepage": "https://github.com/anilpdv/books#readme",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.0",
+    "libgen": "^1.0.0",
+    "pretty-error": "^2.1.1",
+    "prettyjson": "^1.2.1"
+  }
 }

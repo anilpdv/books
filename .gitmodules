@@ -1,0 +1,3 @@
+[submodule "libgen.js"]
+	path = libgen.js
+	url = https://github.com/anilpdv/libgen.js.git
