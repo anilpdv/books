@@ -1,5 +1,5 @@
 const express = require('express');
-const libgen = require('../../lib/libgen.js/index.js');
+const libgen = require('../../libgen.js/index.js');
 const axios = require('axios');
 const prettyError = require('pretty-error');
 
