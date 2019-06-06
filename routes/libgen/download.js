@@ -1,11 +1,14 @@
 const express = require('express');
 const axios = require('axios');
-const router = express.Router();
+const prettyError = require('pretty-error');
 
-router.get('/download/:md5', (req, res) => {
+const router = express.Router();
+const pe = new prettyError();
+
+router.get('/download/:title', (req, res) => {
   res.set('Content-Type', 'application/epub+zip');
   axios
-    .get('http://libgen.io/get.php?md5=' + req.params.md5, {
+    .get('http://libgen.io/get.php?md5=' + req.query.md5, {
       responseType: 'stream',
     })
     .then(resp => {
@@ -13,6 +16,18 @@ router.get('/download/:md5', (req, res) => {
     })
     .catch(err => {
       console.log(pe.render(err));
+    });
+});
+
+router.get('/:id', (req, res) => {
+  const url = 'http://libgen.io/json.php?ids=' + req.params.id;
+  axios
+    .get(url)
+    .then(result => {
+      res.send(result.data);
+    })
+    .catch(err => {
+      console.log(err);
     });
 });
 

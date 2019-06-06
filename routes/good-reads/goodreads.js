@@ -2,6 +2,8 @@ const express = require('express');
 const axios = require('axios');
 const router = express.Router();
 
+const apikey = 'WL3kZbSi6A4J0XFcBuTmg';
+
 router.get('/review/:isbn', (req, res) => {
   console.log(req.params);
   const url =
@@ -11,10 +13,11 @@ router.get('/review/:isbn', (req, res) => {
   axios
     .get(url)
     .then(data => {
-      res.send(data.data.reviews_widget);
+      console.log(data.data);
+      res.send(JSON.stringify(data.data));
     })
     .catch(err => {
-      res.send(err);
+      console.log(err);
     });
 });
 

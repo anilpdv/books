@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title></title>
+    <script src="https://cdn.jsdelivr.net/npm/epubjs/dist/epub.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.5/jszip.min.js"></script>
+  </head>
+  <body>
+    <div id="area"></div>
+    <button id="prev">prev</button>
+    <button id="next">next</button>
+    <script>
+      var book = ePub(
+        'http://localhost:3000/api/book/reader/node.js?md5=92E9403AF4D26E0AC341EE3B7009820B',
+      );
+      var rendition = book.renderTo('area', {
+        flow: 'paginated',
+        width: '900',
+        height: '600',
+      });
+      var count = 0;
+      var displayed = rendition.display();
+      var next = document.getElementById('next');
+      next.addEventListener(
+        'click',
+        function() {
+          rendition.next();
+        },
+        false,
+      );
+      var prev = document.getElementById('prev');
+      prev.addEventListener(
+        'click',
+        function() {
+          rendition.prev();
+        },
+        false,
+      );
+      var keyListener = function(e) {
+        // Left Key
+        if ((e.keyCode || e.which) == 37) {
+          rendition.prev();
+        }
+        // Right Key
+        if ((e.keyCode || e.which) == 39) {
+          rendition.next();
+        }
+      };
+    </script>
+  </body>
+</html>

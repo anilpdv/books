@@ -1,9 +1,8 @@
 // : importing the modules
 const express = require('express');
-const axios = require('axios');
-const PrettyError = require('pretty-error');
-const fs = require('fs');
-const libgen = require('libgen');
+const expressOasGenerator = require('express-oas-generator');
+const path = require('path');
+const cors = require('cors');
 
 // : routes
 const searchRoute = require('./routes/libgen/search');
@@ -11,13 +10,17 @@ const reviewRoute = require('./routes/good-reads/goodreads.js');
 const downloadRoute = require('./routes/libgen/download.js');
 
 // : creating instance
-const pe = PrettyError();
 const app = express();
+expressOasGenerator.init(app, {});
+app.use(cors());
+
+// : middleware
+app.use('/static', express.static(path.join(__dirname, 'public')));
 
 // : creating routes
-app.use('/api', searchRoute);
-app.use('/api', reviewRoute);
-app.use('/api', downloadRoute);
+app.use('/api/books', searchRoute);
+app.use('/api/book', reviewRoute);
+app.use('/api/book', downloadRoute);
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {

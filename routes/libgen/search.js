@@ -7,6 +7,7 @@ const pe = new prettyError();
 const router = express.Router();
 
 router.get('/search', (req, res) => {
+  errors = [];
   if (req.query.q) {
     const q = req.query.q;
 
@@ -15,7 +16,7 @@ router.get('/search', (req, res) => {
     const options = {
       mirror: 'http://libgen.io',
       query: q,
-      count: 30,
+      count: req.query.nu,
       search_in: search_in,
     };
 
@@ -23,7 +24,8 @@ router.get('/search', (req, res) => {
       if (err) {
         let err = new Error('internal error');
         err.status = 404;
-        res.send(err);
+        errors.push(err);
+        res.send(errors);
       } else {
         res.json(data);
       }
@@ -38,7 +40,7 @@ router.get('/search', (req, res) => {
 router.get('/latest', (req, res) => {
   const from = req.query.from;
   const to = req.query.to;
-  const url = `http://libgen.io/json.php?mode=last&timefirst=${from}&timelast=${to}`;
+  const url = `http://libgen.io/json.php?mode=last&timefirst=${from}&timelast=${to}&limit1=100`;
   axios
     .get(url)
     .then(data => {
