@@ -4,18 +4,14 @@
   "description": "A website to download and view books",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon app.js",
+    "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/anilpdv/books"
   },
-  "keywords": [
-    "books",
-    "nodejs",
-    "libgen-books"
-  ],
+  "keywords": ["books", "nodejs", "libgen-books"],
   "author": "anilpdv",
   "license": "ISC",
   "bugs": {
