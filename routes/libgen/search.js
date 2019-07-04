@@ -16,11 +16,11 @@ router.get('/search', (req, res) => {
     const options = {
       mirror: 'http://libgen.io',
       query: q,
-      count: req.query.nu,
       search_in: search_in,
+      page: req.query.page,
     };
 
-    libgen.search(options, (err, data) => {
+    libgen.pageSearch(options, (err, data) => {
       if (err) {
         let err = new Error('internal error');
         err.status = 404;
