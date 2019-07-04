@@ -11,7 +11,11 @@
     "type": "git",
     "url": "https://github.com/anilpdv/books"
   },
-  "keywords": ["books", "nodejs", "libgen-books"],
+  "keywords": [
+    "books",
+    "nodejs",
+    "libgen-books"
+  ],
   "author": "anilpdv",
   "license": "ISC",
   "bugs": {
@@ -19,7 +23,8 @@
   },
   "homepage": "https://github.com/anilpdv/books#readme",
   "dependencies": {
-    "axios": "^0.18.1",
+    "axios": "^0.19.0",
+    "balanced-match": "^1.0.0",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
