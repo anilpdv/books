@@ -31,6 +31,7 @@
     "express": "^4.17.1",
     "express-oas-generator": "^1.0.7",
     "pretty-error": "^2.1.1",
-    "prettyjson": "^1.2.1"
+    "prettyjson": "^1.2.1",
+    "request": "^2.88.0"
   }
 }
