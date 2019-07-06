@@ -1,7 +1,7 @@
 const express = require('express');
-const libgen = require('../../libgen.js/index.js');
 const axios = require('axios');
 const prettyError = require('pretty-error');
+const libgen = require('../../LibGen');
 
 const pe = new prettyError();
 const router = express.Router();
@@ -11,25 +11,18 @@ router.get('/search', (req, res) => {
   if (req.query.q) {
     const q = req.query.q;
 
-    const search_in = req.query.search_in;
-
     const options = {
-      mirror: 'http://libgen.io',
       query: q,
-      search_in: search_in,
       page: req.query.page,
     };
 
-    libgen.pageSearch(options, (err, data) => {
-      if (err) {
-        let err = new Error('internal error');
-        err.status = 404;
-        errors.push(err);
-        res.send(errors);
-      } else {
+    libgen(options)
+      .then(data => {
         res.json(data);
-      }
-    });
+      })
+      .catch(err => {
+        res.send(err);
+      });
   } else {
     let err = new Error(' query is not provided');
     err.status = 404;
@@ -40,11 +33,13 @@ router.get('/search', (req, res) => {
 router.get('/latest', (req, res) => {
   const from = req.query.from;
   const to = req.query.to;
-  const url = `http://libgen.io/json.php?mode=last&timefirst=${from}&timelast=${to}&limit1=100`;
+  const limit = req.query.limit;
+  const url = `http://booksdescr.org/json.php?mode=last&timefirst=${from}&timelast=${to}&limit1=${limit}`;
+  console.log(url);
   axios
     .get(url)
-    .then(data => {
-      res.json(data.data);
+    .then(resp => {
+      res.json(resp.data);
     })
     .catch(err => {
       console.log(pe.render(err));

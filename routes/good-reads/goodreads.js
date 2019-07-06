@@ -13,7 +13,6 @@ router.get('/review/:isbn', (req, res) => {
   axios
     .get(url)
     .then(data => {
-      console.log(data.data);
       res.send(JSON.stringify(data.data));
     })
     .catch(err => {
