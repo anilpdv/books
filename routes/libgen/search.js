@@ -21,6 +21,7 @@ router.get('/search', (req, res) => {
         res.json(data);
       })
       .catch(err => {
+        console.log('error happend ');
         res.send(err);
       });
   } else {
