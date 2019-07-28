@@ -5,8 +5,8 @@ const prettyError = require('pretty-error');
 const router = express.Router();
 const pe = new prettyError();
 
+// res.set('Content-Type', 'application/epub+zip');
 router.get('/download/:title', (req, res) => {
-  res.set('Content-Type', 'application/epub+zip');
   axios
     .get('http://libgen.io/get.php?md5=' + req.query.md5, {
       responseType: 'stream',

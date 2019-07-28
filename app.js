@@ -22,7 +22,7 @@ app.use('/api/books', searchRoute);
 app.use('/api/book', reviewRoute);
 app.use('/api/book', downloadRoute);
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 8080;
 app.listen(port, () => {
   console.log('server is started and listening to port 3000');
   console.log(`listen to the server http://localhost:${port}`);

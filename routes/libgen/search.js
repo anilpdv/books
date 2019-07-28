@@ -8,12 +8,13 @@ const router = express.Router();
 
 router.get('/search', (req, res) => {
   errors = [];
+
   if (req.query.q) {
     const q = req.query.q;
 
     const options = {
       query: q,
-      page: req.query.page,
+      page: req.query.page ? req.query.page : 1,
     };
 
     libgen(options)
@@ -27,7 +28,10 @@ router.get('/search', (req, res) => {
   } else {
     let err = new Error(' query is not provided');
     err.status = 404;
-    res.send({message: err.message, status: err.status});
+    res.send({
+      message: err.message,
+      status: err.status
+    });
   }
 });
 
