@@ -20,7 +20,7 @@ router.get('/download/:title', (req, res) => {
 });
 
 router.get('/:id', (req, res) => {
-  const url = 'http://libgen.io/json.php?ids=' + req.params.id;
+  const url = 'http://gen.lib.rus.ec/json.php?ids=' + req.params.id;
   axios
     .get(url)
     .then(result => {
