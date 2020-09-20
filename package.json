@@ -12,7 +12,11 @@
     "type": "git",
     "url": "https://github.com/anilpdv/books"
   },
-  "keywords": ["books", "nodejs", "libgen-books"],
+  "keywords": [
+    "books",
+    "nodejs",
+    "libgen-books"
+  ],
   "author": "anilpdv",
   "license": "ISC",
   "bugs": {
