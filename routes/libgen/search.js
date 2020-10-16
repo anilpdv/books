@@ -23,11 +23,13 @@ router.get('/search', (req, res) => {
       })
       .catch(err => {
         console.log('error happend ');
+        res.status(500);
         res.send(err);
       });
   } else {
     let err = new Error(' query is not provided');
-    err.status = 404;
+    err.status = 400;
+    res.status(400);
     res.send({
       message: err.message,
       status: err.status

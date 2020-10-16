@@ -33,6 +33,7 @@ router.get('/rating/:isbn', (req, res) => {
       res.send(data.data.books);
     })
     .catch(err => {
+      res.status(400);
       res.send(err);
     });
 });
