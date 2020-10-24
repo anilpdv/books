@@ -3,6 +3,7 @@ const axios = require('axios');
 const prettyError = require('pretty-error');
 const libgen = require('../../LibGen');
 
+
 const pe = new prettyError();
 const router = express.Router();
 
@@ -48,6 +49,16 @@ router.get('/search', (req, res) => {
     });
   }
 });
+
+router.get('/downloadUrl',(req,res) => {
+let response = {
+            durl : `http://31.42.184.140/main` ,
+          }
+
+    res.json(response);
+  
+    
+})
 
 router.get('/latest', (req, res) => {
   const from = req.query.from;
