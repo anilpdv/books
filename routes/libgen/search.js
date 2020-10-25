@@ -61,7 +61,7 @@ let response = {
             durl : `http://31.42.184.140/main` ,
 	host,
 	searchUrl,
-	regex,
+        regex: /bgcolor.+<td>(\d+)<\/td>/gm,
 	dataUrl,
 	coversUrl
           }
