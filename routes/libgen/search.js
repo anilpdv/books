@@ -51,9 +51,21 @@ router.get('/search', (req, res) => {
 });
 
 router.get('/downloadUrl',(req,res) => {
+let host = 'http://libgen.is';
+let searchUrl = `${host}/search.php?req=`;
+let regex = /bgcolor.+<td>(\d+)<\/td>/gm;
+let dataUrl = `${host}/json.php?fields=id,Title,Author,MD5,coverurl,language,filesize,extension,year,identifier,descr,publisher&ids=`;
+let coversUrl = `${host}/covers/`;
+
 let response = {
             durl : `http://31.42.184.140/main` ,
+	host,
+	searchUrl,
+	regex,
+	dataUrl,
+	coversUrl
           }
+
 
     res.json(response);
   
